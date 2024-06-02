@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:news_app/data/services/api.service.dart';
-import 'package:news_app/domain/models/article.entity.dart';
+import 'package:news_app/domain/models/article.dart';
 
 class NewsViewModel extends ChangeNotifier {
   final ApiService apiService;
@@ -14,7 +14,7 @@ class NewsViewModel extends ChangeNotifier {
 
     try {
       articles = await apiService.fetchTopHeadlines();
-    } catch (exception){
+    } catch (exception) {
       print(exception.toString());
     } finally {
       isLoading = false;

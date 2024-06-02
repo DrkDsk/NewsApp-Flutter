@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/domain/models/category.entity.dart';
+import 'package:news_app/domain/models/category.dart';
 import 'package:news_app/ui/screens/home/widgets/category.card.dart';
 
 class CategoryList extends StatelessWidget {
@@ -17,7 +17,7 @@ class CategoryList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: categoryItems.length,
         itemBuilder: (BuildContext context, index)  {
-          CategoryItem item = categoryItems.elementAt(index);
+          Category item = categoryItems.elementAt(index);
           return CategoryCard(imageAsset: item.imageAsset, title: item.title);
         },
         separatorBuilder: (BuildContext context, int index) {

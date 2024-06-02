@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/ui/resources/colors.dart';
 
 class ArticleCard extends StatelessWidget {
 
-  final String title, author;
+  final String title;
+  final String author;
+  final String imageUrl;
 
   const ArticleCard({
     super.key,
     required this.title,
-    required this.author
+    required this.author,
+    required this.imageUrl
   });
 
   @override
@@ -40,9 +42,10 @@ class ArticleCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.blue.shade900,
                 borderRadius: BorderRadius.circular(10),
-                image: const DecorationImage(
+                image: DecorationImage(
                   fit: BoxFit.fitHeight,
-                  image: AssetImage("images/enter.jpg")
+                  image: NetworkImage(imageUrl),
+                  onError: (error, stackTrace) {}
                 )
               ),
             ),
@@ -69,30 +72,17 @@ class ArticleCard extends StatelessWidget {
                     const SizedBox(height: 5),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                           Text(
-                            author,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 3,
-                            softWrap: false,
-                            style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: "Poppins"
-                            ),
-                            textAlign: TextAlign.justify,
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,//change background color of button
-                              backgroundColor: secondaryColor,
-                            ),
-                            onPressed: () {},
-                            child: const Text("Detalles")
-                          )
-                        ],
+                      child: Text(
+                        author,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        softWrap: false,
+                        style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: "Poppins"
+                        ),
+                        textAlign: TextAlign.justify,
                       ),
                     ),
                   ],
