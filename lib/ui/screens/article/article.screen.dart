@@ -8,12 +8,12 @@ class ArticleScreen extends StatelessWidget {
     return SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: Container(
               width: MediaQuery.of(context).size.width * 0.90,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(35),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
@@ -29,13 +29,16 @@ class ArticleScreen extends StatelessWidget {
                     height: MediaQuery.of(context).size.width * 0.8,
                     width: MediaQuery.of(context).size.width * 0.95,
                     decoration: BoxDecoration(
-                        color: Colors.blue.shade900,
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: const NetworkImage("https://media.zenfs.com/en/aol_parade_744/45f62d2d5f5c1f76459433e3c39a7598"),
-                            onError: (error, stackTrace) {}
-                        )
+                      color: Colors.blue.shade900,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(35),
+                        topRight: Radius.circular(35)
+                      ),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: const NetworkImage("https://media.zenfs.com/en/aol_parade_744/45f62d2d5f5c1f76459433e3c39a7598"),
+                          onError: (error, stackTrace) {}
+                      )
                     ),
                   ),
                   const Text(
