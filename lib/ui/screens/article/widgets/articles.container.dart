@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
-import 'package:news_app/ui/screens/home/widgets/article.card.dart';
+import 'package:news_app/ui/screens/article/widgets/article.card.dart';
 
 class ArticlesContainer extends StatelessWidget {
 

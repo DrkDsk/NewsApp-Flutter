@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
-import 'package:news_app/ui/screens/home/widgets/articles.container.dart';
+import 'package:news_app/ui/screens/article/widgets/articles.container.dart';
 import 'package:provider/provider.dart';
 
 class ArticlesListView extends StatefulWidget {
