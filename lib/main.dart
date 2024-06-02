@@ -17,8 +17,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) =>
-            NewsViewModel(apiService: ApiService()))
+        ChangeNotifierProvider(
+          create: (_) => NewsViewModel(apiService: ApiService()),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

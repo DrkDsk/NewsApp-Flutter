@@ -16,11 +16,11 @@ class CategoryCard extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.80,
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(imageAsset),
-          onError: (error, stackTrace) {},
-          fit: BoxFit.cover
-        ),
+          image: DecorationImage(
+            image: AssetImage(imageAsset),
+            onError: (error, stackTrace) {},
+            fit: BoxFit.cover
+          ),
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
