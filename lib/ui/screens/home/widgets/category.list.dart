@@ -1,11 +1,59 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:news_app/domain/models/category.dart';
+import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
 import 'package:news_app/ui/screens/home/widgets/category.card.dart';
+import 'package:provider/provider.dart';
 
-class CategoryList extends StatelessWidget {
+class CategoryList extends StatefulWidget {
   const CategoryList({
     super.key,
   });
+
+  @override
+  State<CategoryList> createState() => _CategoryListState();
+}
+
+class _CategoryListState extends State<CategoryList> {
+
+  final ScrollController _scrollController = ScrollController();
+  late NewsViewModel newsViewModel;
+  Timer? _debounce;
+
+  @override
+  void initState(){
+    newsViewModel = Provider.of<NewsViewModel>(context, listen: false);
+    _scrollController.addListener(_onScroll);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    newsViewModel.dispose();
+    _debounce?.cancel();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (_debounce?.isActive ?? false) _debounce!.cancel();
+    if (_scrollController.position.isScrollingNotifier.value) {
+      _debounce = Timer(const Duration(milliseconds: 200), () {
+        int currentSelectedIndex = _getCenteredIndex();
+        Category item = categoryItems.elementAt(currentSelectedIndex);
+        String categoryTitle = item.title;
+        newsViewModel.fetchCategoryNews(categoryTitle);
+      });
+    }
+  }
+
+  int _getCenteredIndex() {
+    double scrollOffset = _scrollController.offset;
+    double itemWidth = MediaQuery.of(context).size.width * 0.80;
+    int centeredIndex = (scrollOffset / itemWidth).round();
+    return centeredIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +61,9 @@ class CategoryList extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       height: 300,
       child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         scrollDirection: Axis.horizontal,
+        controller: _scrollController,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         itemCount: categoryItems.length,
         itemBuilder: (BuildContext context, index)  {
           Category item = categoryItems.elementAt(index);

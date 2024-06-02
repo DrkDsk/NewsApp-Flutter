@@ -21,4 +21,16 @@ class NewsViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  fetchCategoryNews(String category) async {
+    isLoading = true;
+    try {
+      articles = await apiService.fetchCategory(category: category.toLowerCase());
+    } catch (exception) {
+      print(exception.toString());
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
 }

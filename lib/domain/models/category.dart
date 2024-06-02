@@ -10,7 +10,7 @@ class Category {
 
 List<Category> categoryItems = [
   const Category(imageAsset: 'images/business.jpg', title: 'Business'),
-  const Category(imageAsset: 'images/enter.jpg', title: 'Entertainment'),
+  const Category(imageAsset: 'images/entertainment.jpg', title: 'Entertainment'),
   const Category(imageAsset: 'images/general.jpg', title: 'General'),
   const Category(imageAsset: 'images/health.jpg', title: 'Health'),
   const Category(imageAsset: 'images/science.jpg', title: 'Science'),
