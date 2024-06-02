@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/domain/models/category.entity.dart';
-import 'package:news_app/ui/screens/widgets/category.card.dart';
+import 'package:news_app/ui/screens/home/widgets/category.card.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({

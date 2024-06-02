@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/data/services/api.service.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
 import 'package:news_app/ui/resources/colors.dart';
-import 'package:news_app/ui/screens/home.screen.dart';
+import 'package:news_app/ui/screens/home/home.screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {

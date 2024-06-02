@@ -3,7 +3,13 @@ import 'package:news_app/ui/resources/colors.dart';
 
 class ArticleCard extends StatelessWidget {
 
-  const ArticleCard({super.key});
+  final String title, author;
+
+  const ArticleCard({
+    super.key,
+    required this.title,
+    required this.author
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +51,14 @@ class ArticleCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                     Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       child: Text(
-                        "Colo Colo informó sobre la gravedad de la lesión de Maxi Falcón - ESPN",
+                        title,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 3,
                         softWrap: false,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
                           fontFamily: "Poppins"
@@ -66,12 +72,12 @@ class ArticleCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "ESPN",
+                           Text(
+                            author,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3,
                             softWrap: false,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: "Poppins"
