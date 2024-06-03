@@ -4,6 +4,7 @@ import 'package:news_app/ui/screens/article/widgets/articles.container.dart';
 import 'package:provider/provider.dart';
 
 class ArticlesListView extends StatefulWidget {
+
   const ArticlesListView({
     super.key,
   });

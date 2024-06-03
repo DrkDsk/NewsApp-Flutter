@@ -3,12 +3,14 @@ import 'package:news_app/data/services/api.service.dart';
 import 'package:news_app/domain/models/article.dart';
 
 class NewsViewModel extends ChangeNotifier {
+
   final ApiService apiService;
   List<Article> articles = [];
-  bool fetchedTopHeadlines = false;
-  bool isLoading = false;
   late Article selectedArticle;
   String selectedCategory = "";
+  String headerListNewsTitle = "Latest news";
+  bool fetchedTopHeadlines = false;
+  bool isLoading = false;
 
   NewsViewModel({required this.apiService});
 
@@ -19,6 +21,11 @@ class NewsViewModel extends ChangeNotifier {
 
   setSelectedCategory(String title) {
     selectedCategory = title;
+    notifyListeners();
+  }
+
+  setHeaderListNewsTitle(String title) {
+    headerListNewsTitle = title;
     notifyListeners();
   }
 

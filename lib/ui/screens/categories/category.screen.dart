@@ -50,6 +50,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         Category categorySelected = categoryItems.elementAt(currentSelectedIndex);
         String categoryTitle = categorySelected.title;
         newsViewModel.setSelectedCategory(categoryTitle);
+        newsViewModel.setHeaderListNewsTitle(categoryTitle);
       });
     }
   }
