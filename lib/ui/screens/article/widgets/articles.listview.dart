@@ -19,7 +19,8 @@ class _ArticlesListViewState extends State<ArticlesListView> {
   @override
   void initState(){
     super.initState();
-    //newsViewModel = Provider.of<NewsViewModel>(context, listen: false);
+    newsViewModel = Provider.of<NewsViewModel>(context, listen: false);
+    newsViewModel.fetchTopHeadlines();
   }
 
   @override
