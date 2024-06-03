@@ -7,7 +7,8 @@ class ArticlesContainer extends StatelessWidget {
   final NewsViewModel newsViewModel;
 
   const ArticlesContainer({
-    super.key, required this.newsViewModel,
+    super.key,
+    required this.newsViewModel,
   });
 
   @override
@@ -20,9 +21,7 @@ class ArticlesContainer extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: ArticleCard(
-                  author: article.author ?? "Unknown Author",
-                  title: article.title ?? "Unknown Title",
-                  imageUrl: article.urlToImage ?? "Unknown Image",
+                  article: article,
                 ),
               );
             }

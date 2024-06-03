@@ -6,6 +6,7 @@ class NewsViewModel extends ChangeNotifier {
   final ApiService apiService;
   List<Article> articles = [];
   bool isLoading = false;
+  late Article selectedArticle;
 
   NewsViewModel({required this.apiService});
 
@@ -20,6 +21,11 @@ class NewsViewModel extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     }
+  }
+
+  setSelectedArticle(Article article) {
+    selectedArticle = article;
+    notifyListeners();
   }
 
   fetchCategoryNews(String category) async {

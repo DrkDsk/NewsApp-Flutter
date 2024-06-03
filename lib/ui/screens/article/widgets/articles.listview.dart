@@ -26,8 +26,6 @@ class _ArticlesListViewState extends State<ArticlesListView> {
   @override
   Widget build(BuildContext context) {
 
-    newsViewModel = Provider.of<NewsViewModel>(context);
-
     return Consumer<NewsViewModel>(
       builder: (
           BuildContext context,
