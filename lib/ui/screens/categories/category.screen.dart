@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/domain/models/category.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
+import 'package:news_app/domain/viewmodels/routes.provider.dart';
 import 'package:news_app/ui/screens/home/widgets/category.card.dart';
 import 'package:news_app/ui/screens/shared/large_orange.button.dart';
 import 'package:provider/provider.dart';
@@ -22,11 +23,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   final ScrollController _scrollController = ScrollController();
   late NewsViewModel newsViewModel;
+  late RouteProvider routeProvider;
   Timer? _debounce;
 
   @override
   void initState(){
     newsViewModel = Provider.of<NewsViewModel>(context, listen: false);
+    routeProvider = Provider.of<RouteProvider>(context, listen: false);
     _scrollController.addListener(_onScroll);
     super.initState();
   }
@@ -63,6 +66,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
     void handleSelectCategory() {
       newsViewModel.fetchCategoryNews();
+      routeProvider.setCurrentIndexPage(0);
       context.goNamed('home');
     }
 

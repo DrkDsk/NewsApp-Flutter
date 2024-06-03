@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news_app/domain/viewmodels/routes.provider.dart';
 import 'package:news_app/ui/screens/categories/category.screen.dart';
 import 'package:news_app/ui/screens/home/home.screen.dart';
+import 'package:provider/provider.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -19,8 +21,6 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
 
-  int selectedIndex = 0;
-
   void _goToBranch(int index) {
     widget.navigationShell.goBranch(
       index,
@@ -30,34 +30,38 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: widget.navigationShell,
-      ),
-      bottomNavigationBar: SlidingClippedNavBar(
-        backgroundColor: Colors.white,
-        barItems: [
-          BarItem(
-            title: HomeScreen.route,
-            icon: Icons.home
+    return Consumer<RouteProvider>(
+      builder: (context, value, child) {
+        return Scaffold(
+          body: SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: widget.navigationShell,
           ),
-          BarItem(
-              title: CategoryScreen.route,
-              icon: Icons.category
+          bottomNavigationBar: SlidingClippedNavBar(
+            backgroundColor: Colors.white,
+            barItems: [
+              BarItem(
+                  title: HomeScreen.route,
+                  icon: Icons.home
+              ),
+              BarItem(
+                  title: CategoryScreen.route,
+                  icon: Icons.category
+              ),
+            ],
+            selectedIndex: value.currentIndexSelectedPage,
+            iconSize: 30,
+            onButtonPressed: (int index) {
+              setState(() {
+                value.setCurrentIndexPage(index);
+              });
+              _goToBranch(value.currentIndexSelectedPage);
+            },
+            activeColor: Colors.black,
           ),
-        ],
-        selectedIndex: selectedIndex,
-        iconSize: 30,
-        onButtonPressed: (int index) {
-          setState(() {
-            selectedIndex = index;
-          });
-          _goToBranch(selectedIndex);
-        },
-        activeColor: Colors.black,
-      ),
+        );
+      },
     );
   }
 }

@@ -20,7 +20,6 @@ class AppNavigation {
     debugLogDiagnostics: true,
     routes: <RouteBase>[
       StatefulShellRoute.indexedStack(
-
         builder: (context, state, navigationShell) {
           return MainScreen(navigationShell: navigationShell);
         },
