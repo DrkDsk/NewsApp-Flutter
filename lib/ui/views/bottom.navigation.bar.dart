@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/domain/viewmodels/routes.provider.dart';
 import 'package:news_app/ui/resources/colors.dart';
+import 'package:news_app/ui/screens/categories/category.screen.dart';
+import 'package:news_app/ui/screens/home/home.screen.dart';
+import 'package:provider/provider.dart';
 
 class NewsBottomNavigationBar extends StatefulWidget {
   const NewsBottomNavigationBar({super.key});
@@ -10,16 +14,24 @@ class NewsBottomNavigationBar extends StatefulWidget {
 
 class _NewsBottomNavigationBarState extends State<NewsBottomNavigationBar> {
 
-  int _selectedIndex = 0;
+  late RouteProvider routeProvider;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  void _onItemTapped({required int index, required String routeName}) {
+    routeProvider.setCurrentIndexPage(index);
+    Navigator.pushNamed(context, routeName);
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    routeProvider = Provider.of<RouteProvider>(context, listen: false);
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final RouteProvider routeProvider = Provider.of<RouteProvider>(context);
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24),
       decoration: BoxDecoration(
@@ -37,16 +49,22 @@ class _NewsBottomNavigationBarState extends State<NewsBottomNavigationBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(Icons.home, 'Home', 0),
-          _buildNavItem(Icons.category, 'Categories', 2),
+          _buildNavItem(icon: Icons.home, label: 'Home', index: 0, routeProvider: routeProvider, routeName: HomeScreen.route),
+          _buildNavItem(icon: Icons.category, label: 'Categories', index: 1, routeProvider: routeProvider, routeName: CategoryScreen.route)
         ],
       ),
     );
   }
 
-  Widget _buildNavItem(IconData icon, String label, int index) {
+  Widget _buildNavItem({
+    required IconData icon,
+    required String label,
+    required int index,
+    required RouteProvider routeProvider,
+    required String routeName
+  }) {
     return GestureDetector(
-      onTap: () => _onItemTapped(index),
+      onTap: () => _onItemTapped(index: index, routeName: routeName),
       child: Container(
         color: Colors.transparent,
         padding: const EdgeInsets.symmetric(vertical: 10),
@@ -55,12 +73,12 @@ class _NewsBottomNavigationBarState extends State<NewsBottomNavigationBar> {
           children: [
             Icon(
               icon,
-              color: _selectedIndex == index ? Colors.blue : Colors.grey,
+              color: routeProvider.currentIndexSelectedPage == index ? Colors.blue : Colors.grey,
             ),
             Text(
               label,
               style: TextStyle(
-                color: _selectedIndex == index ? Colors.blue : Colors.grey,
+                color: routeProvider.currentIndexSelectedPage == index ? Colors.blue : Colors.grey,
               ),
             ),
           ],
