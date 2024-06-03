@@ -6,16 +6,18 @@ import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
 import 'package:news_app/ui/screens/home/widgets/category.card.dart';
 import 'package:provider/provider.dart';
 
-class CategoryList extends StatefulWidget {
-  const CategoryList({
+class CategoryScreen extends StatefulWidget {
+
+  static const String route = "categories";
+  const CategoryScreen({
     super.key,
   });
 
   @override
-  State<CategoryList> createState() => _CategoryListState();
+  State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
-class _CategoryListState extends State<CategoryList> {
+class _CategoryScreenState extends State<CategoryScreen> {
 
   final ScrollController _scrollController = ScrollController();
   late NewsViewModel newsViewModel;
@@ -57,23 +59,25 @@ class _CategoryListState extends State<CategoryList> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      height: 300,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        controller: _scrollController,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        itemCount: categoryItems.length,
-        itemBuilder: (BuildContext context, index)  {
-          Category item = categoryItems.elementAt(index);
-          return CategoryCard(imageAsset: item.imageAsset, title: item.title);
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return const SizedBox(
-            width: 10,
-          );
-        },
+    return Scaffold(
+      body: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        height: 300,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          controller: _scrollController,
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          itemCount: categoryItems.length,
+          itemBuilder: (BuildContext context, index)  {
+            Category item = categoryItems.elementAt(index);
+            return CategoryCard(imageAsset: item.imageAsset, title: item.title);
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return const SizedBox(
+              width: 10,
+            );
+          },
+        ),
       ),
     );
   }

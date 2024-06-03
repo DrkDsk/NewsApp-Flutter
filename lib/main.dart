@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/data/services/api.service.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
-import 'package:news_app/ui/resources/colors.dart';
-import 'package:news_app/ui/screens/home/category.screen.dart';
+import 'package:news_app/domain/viewmodels/routes.provider.dart';
+import 'package:news_app/navigation/app.navigation.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -19,18 +19,18 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => NewsViewModel(apiService: ApiService()),
+        ),
+        ChangeNotifierProvider(
+            create: (_) => RouteProvider()
         )
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: AppNavigation.router,
         debugShowCheckedModeBanner: false,
         title: 'News App',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
-        ),
-        home: const Scaffold(
-          backgroundColor: primaryColor,
-          body: CategoryScreen(),
         ),
       ),
     );
