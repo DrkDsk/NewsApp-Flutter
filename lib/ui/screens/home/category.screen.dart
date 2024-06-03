@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/ui/screens/article/widgets/articles.listview.dart';
-import 'package:news_app/ui/screens/home/widgets/category.list.dart';
 import 'package:news_app/ui/screens/home/widgets/latest_news_title.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -13,7 +12,6 @@ class CategoryScreen extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: 20),
-          CategoryList(),
           LatestNewTitle(text: "Latest news"),
           ArticlesListView()
         ],
