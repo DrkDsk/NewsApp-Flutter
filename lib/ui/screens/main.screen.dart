@@ -1,28 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/ui/screens/article/widgets/articles.listview.dart';
-import 'package:news_app/ui/screens/home/widgets/latest_news_title.dart';
-import 'package:news_app/ui/views/bottom.navigation.bar.dart';
+import 'package:go_router/go_router.dart';
+import 'package:news_app/ui/screens/categories/category.screen.dart';
+import 'package:news_app/ui/screens/home/home.screen.dart';
+import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+
+  final StatefulNavigationShell navigationShell;
+
+  const MainScreen({
+    super.key,
+    required this.navigationShell
+  });
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
+
+  int selectedIndex = 0;
+
+  void _goToBranch(int index) {
+    widget.navigationShell.goBranch(
+      index,
+      initialLocation: index == widget.navigationShell.currentIndex
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      bottomNavigationBar: NewsBottomNavigationBar(),
-      body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            LatestNewTitle(text: "Latest news"),
-            ArticlesListView()
-          ],
-        ),
+    return Scaffold(
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: widget.navigationShell,
+      ),
+      bottomNavigationBar: SlidingClippedNavBar(
+        backgroundColor: Colors.white,
+        barItems: [
+          BarItem(
+            title: HomeScreen.route,
+            icon: Icons.home
+          ),
+          BarItem(
+              title: CategoryScreen.route,
+              icon: Icons.category
+          ),
+        ],
+        selectedIndex: selectedIndex,
+        iconSize: 30,
+        onButtonPressed: (int index) {
+          setState(() {
+            selectedIndex = index;
+          });
+          _goToBranch(selectedIndex);
+        },
+        activeColor: Colors.black,
       ),
     );
   }

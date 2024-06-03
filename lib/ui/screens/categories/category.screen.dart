@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:news_app/domain/models/category.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
 import 'package:news_app/ui/screens/home/widgets/category.card.dart';
-import 'package:news_app/ui/views/bottom.navigation.bar.dart';
 import 'package:provider/provider.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -61,7 +60,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const NewsBottomNavigationBar(),
       body: Container(
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         height: 300,

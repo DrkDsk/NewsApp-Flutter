@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/data/services/api.service.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
 import 'package:news_app/domain/viewmodels/routes.provider.dart';
-import 'package:news_app/ui/screens/home/home.screen.dart';
-import 'package:news_app/ui/screens/categories/category.screen.dart';
+import 'package:news_app/navigation/app.navigation.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -25,12 +24,8 @@ class MyApp extends StatelessWidget {
             create: (_) => RouteProvider()
         )
       ],
-      child: MaterialApp(
-        initialRoute: HomeScreen.route,
-        routes: {
-          HomeScreen.route: (context) => const HomeScreen(),
-          CategoryScreen.route: (context) => const CategoryScreen()
-        },
+      child: MaterialApp.router(
+        routerConfig: AppNavigation.router,
         debugShowCheckedModeBanner: false,
         title: 'News App',
         theme: ThemeData(
