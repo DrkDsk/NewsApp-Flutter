@@ -40,11 +40,19 @@ class AppNavigation {
                   GoRoute(
                     path: 'article',
                     name: 'article',
-                    builder: (context, state) {
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        child: const ArticleScreen(),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          return FadeTransition(opacity: animation, child: child);
+                        }
+                      );
+                    },
+                    /*builder: (context, state) {
                       return ArticleScreen(
                         key: state.pageKey,
                       );
-                    }
+                    }*/
                   )
                 ]
               )
