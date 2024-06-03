@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/ui/screens/article/widgets/article.content.text.dart';
 import 'package:news_app/ui/screens/article/widgets/article.item.title.dart';
 import 'package:news_app/ui/screens/article/widgets/article.rounded.image.dart';
+import 'package:news_app/ui/screens/shared/LargeOrangeButton.dart';
 
 class ArticleItemCard extends StatelessWidget {
   const ArticleItemCard({
@@ -41,31 +42,7 @@ class ArticleItemCard extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-              child: GestureDetector(
-                onTap: () {
-                  print("clicked");
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: const Center(
-                      child: Text(
-                        "Ver detalles",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontFamily: 'Poppins'
-                        ),
-                      )
-                  ),
-                ),
-              ),
-            )
+            const LargeOrangeButton(buttonTitle: 'Ver detalles')
           ],
         ),
       )
