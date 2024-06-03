@@ -33,7 +33,12 @@ class _ArticlesListViewState extends State<ArticlesListView> {
           NewsViewModel newsViewModel,
           Widget? child
           ) {
-        return newsViewModel.isLoading ? const CircularProgressIndicator()
+        return newsViewModel.isLoading ?
+        const Expanded(
+            child: Center(
+              child: CircularProgressIndicator(),
+            )
+        )
         : ArticlesContainer(newsViewModel: newsViewModel);
       },
     );

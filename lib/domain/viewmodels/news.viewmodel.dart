@@ -9,7 +9,6 @@ class NewsViewModel extends ChangeNotifier {
   late Article selectedArticle;
   String selectedCategory = "";
   String headerListNewsTitle = "Latest news";
-  bool fetchedTopHeadlines = false;
   bool isLoading = false;
 
   NewsViewModel({required this.apiService});
@@ -31,7 +30,7 @@ class NewsViewModel extends ChangeNotifier {
 
   fetchTopHeadlines() async {
     isLoading = true;
-    fetchedTopHeadlines = true;
+    notifyListeners();
 
     try {
       articles = await apiService.fetchTopHeadlines();
@@ -45,6 +44,7 @@ class NewsViewModel extends ChangeNotifier {
 
   fetchCategoryNews() async {
     isLoading = true;
+    notifyListeners();
     try {
       articles = await apiService.fetchCategory(category: selectedCategory.toLowerCase());
     } catch (exception) {
