@@ -5,13 +5,26 @@ import 'package:news_app/domain/models/article.dart';
 class NewsViewModel extends ChangeNotifier {
   final ApiService apiService;
   List<Article> articles = [];
+  bool fetchedTopHeadlines = false;
   bool isLoading = false;
   late Article selectedArticle;
+  String selectedCategory = "";
 
   NewsViewModel({required this.apiService});
 
+  setSelectedArticle(Article article) {
+    selectedArticle = article;
+    notifyListeners();
+  }
+
+  setSelectedCategory(String title) {
+    selectedCategory = title;
+    notifyListeners();
+  }
+
   fetchTopHeadlines() async {
     isLoading = true;
+    fetchedTopHeadlines = true;
 
     try {
       articles = await apiService.fetchTopHeadlines();
@@ -23,15 +36,10 @@ class NewsViewModel extends ChangeNotifier {
     }
   }
 
-  setSelectedArticle(Article article) {
-    selectedArticle = article;
-    notifyListeners();
-  }
-
-  fetchCategoryNews(String category) async {
+  fetchCategoryNews() async {
     isLoading = true;
     try {
-      articles = await apiService.fetchCategory(category: category.toLowerCase());
+      articles = await apiService.fetchCategory(category: selectedCategory.toLowerCase());
     } catch (exception) {
       print(exception.toString());
     } finally {

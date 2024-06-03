@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/ui/screens/article/widgets/article.content.text.dart';
 import 'package:news_app/ui/screens/article/widgets/article.item.title.dart';
 import 'package:news_app/ui/screens/article/widgets/article.rounded.image.dart';
-import 'package:news_app/ui/screens/shared/LargeOrangeButton.dart';
+import 'package:news_app/ui/screens/shared/large_orange.button.dart';
 
 class ArticleItemCard extends StatelessWidget {
   const ArticleItemCard({
@@ -11,6 +11,11 @@ class ArticleItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    void handleViewNewsInWebSite() {
+
+    }
+
     return SafeArea(
         child: Center(
           child: Column(
@@ -42,7 +47,10 @@ class ArticleItemCard extends StatelessWidget {
                 ),
               ),
             ),
-            const LargeOrangeButton(buttonTitle: 'Ver detalles')
+              LargeOrangeButton(
+                onTap: handleViewNewsInWebSite,
+                buttonTitle: 'Ver detalles'
+            )
           ],
         ),
       )

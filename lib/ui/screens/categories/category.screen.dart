@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:news_app/domain/models/category.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
 import 'package:news_app/ui/screens/home/widgets/category.card.dart';
-import 'package:news_app/ui/screens/shared/LargeOrangeButton.dart';
+import 'package:news_app/ui/screens/shared/large_orange.button.dart';
 import 'package:provider/provider.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -45,7 +46,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         int currentSelectedIndex = _getCenteredIndex();
         Category categorySelected = categoryItems.elementAt(currentSelectedIndex);
         String categoryTitle = categorySelected.title;
-        //newsViewModel.fetchCategoryNews(categoryTitle);
+        newsViewModel.setSelectedCategory(categoryTitle);
       });
     }
   }
@@ -59,6 +60,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    void handleSelectCategory() {
+      newsViewModel.fetchCategoryNews();
+      context.goNamed('home');
+    }
+
     return Scaffold(
       body: Column(
         children: [
@@ -81,7 +88,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
               },
             ),
           ),
-          const LargeOrangeButton(buttonTitle: "Seleccionar")
+          LargeOrangeButton(
+            onTap: handleSelectCategory,
+            buttonTitle: "Seleccionar"
+          )
         ],
       ),
     );
