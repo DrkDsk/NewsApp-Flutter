@@ -4,6 +4,7 @@ import 'package:news_app/ui/screens/article/article.screen.dart';
 import 'package:news_app/ui/screens/categories/category.screen.dart';
 import 'package:news_app/ui/screens/home/home.screen.dart';
 import 'package:news_app/ui/screens/main.screen.dart';
+import 'package:news_app/ui/screens/search/search.screen.dart';
 
 class AppNavigation {
   AppNavigation._();
@@ -12,6 +13,7 @@ class AppNavigation {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final _rootNavigatorHome = GlobalKey<NavigatorState>(debugLabel: 'shellHome');
   static final _rootNavigatorCategories = GlobalKey<NavigatorState>(debugLabel: 'shellCategories');
+  static final _rootNavigatorSearch = GlobalKey<NavigatorState>(debugLabel: 'shellSearch');
 
   static final GoRouter router =
   GoRouter(
@@ -70,7 +72,21 @@ class AppNavigation {
                   }
                 )
               ]
-          )
+          ),
+          StatefulShellBranch(
+              navigatorKey: _rootNavigatorSearch,
+              routes: [
+                GoRoute(
+                    path: '/search',
+                    name: SearchScreen.route,
+                    builder: (context, state) {
+                      return SearchScreen(
+                        key: state.pageKey,
+                      );
+                    }
+                )
+              ]
+          ),
         ],
       ),
     ],

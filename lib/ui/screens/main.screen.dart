@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:news_app/domain/viewmodels/routes.provider.dart';
 import 'package:news_app/ui/screens/categories/category.screen.dart';
 import 'package:news_app/ui/screens/home/home.screen.dart';
+import 'package:news_app/ui/screens/search/search.screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
 
@@ -48,6 +49,10 @@ class _MainScreenState extends State<MainScreen> {
               BarItem(
                   title: CategoryScreen.route,
                   icon: Icons.category
+              ),
+              BarItem(
+                  title: SearchScreen.route,
+                  icon: Icons.search
               ),
             ],
             selectedIndex: value.currentIndexSelectedPage,
