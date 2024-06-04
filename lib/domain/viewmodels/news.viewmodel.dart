@@ -42,8 +42,23 @@ class NewsViewModel extends ChangeNotifier {
   fetchCategoryNews() async {
     isLoading = true;
     notifyListeners();
+
     try {
       articles = await apiService.fetchCategory(category: selectedCategory.toLowerCase());
+    } catch (exception) {
+      print(exception.toString());
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  fetchNewsBySearchField(String search) async {
+    isLoading = true;
+    notifyListeners();
+
+    try {
+      articles = await apiService.fetchNewsBySearchField(search: search.toLowerCase());
     } catch (exception) {
       print(exception.toString());
     } finally {

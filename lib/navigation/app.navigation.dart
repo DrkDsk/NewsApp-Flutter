@@ -49,11 +49,6 @@ class AppNavigation {
                         }
                       );
                     },
-                    /*builder: (context, state) {
-                      return ArticleScreen(
-                        key: state.pageKey,
-                      );
-                    }*/
                   )
                 ]
               )
