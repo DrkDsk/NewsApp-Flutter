@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ArticleRoundedImage extends StatelessWidget {
+
+  final String imageUrl;
+
   const ArticleRoundedImage({
     super.key,
+    required this.imageUrl,
   });
 
   @override
@@ -18,7 +22,7 @@ class ArticleRoundedImage extends StatelessWidget {
           ),
           image: DecorationImage(
               fit: BoxFit.cover,
-              image: const NetworkImage("https://media.zenfs.com/en/aol_parade_744/45f62d2d5f5c1f76459433e3c39a7598"),
+              image: NetworkImage(imageUrl),
               onError: (error, stackTrace) {}
           )
       ),
