@@ -28,6 +28,11 @@ class NewsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  markAsLoading() {
+    isLoading = true;
+    notifyListeners();
+  }
+
   fetchTopHeadlines() async {
     try {
       articles = await apiService.fetchTopHeadlines();
