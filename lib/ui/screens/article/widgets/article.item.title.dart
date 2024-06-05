@@ -12,13 +12,13 @@ class ArticleItemTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Text(
         overflow: TextOverflow.ellipsis,
         title,
         style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 35,
+            fontSize: 20,
             fontFamily: 'Poppins'
         ),
         maxLines: 2,

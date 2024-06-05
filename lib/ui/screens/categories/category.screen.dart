@@ -4,13 +4,13 @@ import 'package:go_router/go_router.dart';
 import 'package:news_app/domain/models/category.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
 import 'package:news_app/domain/viewmodels/routes.provider.dart';
+import 'package:news_app/ui/screens/home/home.screen.dart';
 import 'package:news_app/ui/screens/home/widgets/category.card.dart';
-import 'package:news_app/ui/screens/shared/large_orange.button.dart';
 import 'package:provider/provider.dart';
 
 class CategoryScreen extends StatefulWidget {
 
-  static const String route = "categories";
+  static const String route = "Categories";
   const CategoryScreen({
     super.key,
   });
@@ -68,7 +68,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     void handleSelectCategory() {
       newsViewModel.fetchCategoryNews();
       routeProvider.setCurrentIndexPage(0);
-      context.goNamed('home');
+      context.goNamed(HomeScreen.route);
     }
 
     return Scaffold(
@@ -76,7 +76,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         children: [
           Container(
             margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
-            height: 500,
+            height: 600,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               controller: _scrollController,
@@ -84,7 +84,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
               itemCount: categoryItems.length,
               itemBuilder: (BuildContext context, index)  {
                 Category item = categoryItems.elementAt(index);
-                return CategoryCard(imageAsset: item.imageAsset, title: item.title);
+                return GestureDetector(
+                  onTap: handleSelectCategory,
+                  child: CategoryCard(
+                    imageAsset: item.imageAsset,
+                    title: item.title
+                  )
+                );
               },
               separatorBuilder: (BuildContext context, int index) {
                 return const SizedBox(
@@ -93,10 +99,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
               },
             ),
           ),
-          LargeOrangeButton(
-            onTap: handleSelectCategory,
-            buttonTitle: "Seleccionar"
-          )
         ],
       ),
     );

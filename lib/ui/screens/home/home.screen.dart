@@ -5,7 +5,7 @@ import 'package:news_app/ui/screens/home/widgets/header_list_news.title.dart';
 
 class HomeScreen extends StatefulWidget {
 
-  static const String route = "home";
+  static const String route = "Home";
   const HomeScreen({super.key});
 
   @override

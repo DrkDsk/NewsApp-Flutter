@@ -26,7 +26,7 @@ class ArticleCard extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.90,
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
@@ -48,7 +48,7 @@ class ArticleCard extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 4 - 10,
                     decoration: BoxDecoration(
                         color: Colors.blue.shade900,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(8),
                         image: DecorationImage(
                             fit: BoxFit.fitHeight,
                             image: NetworkImage(article.urlToImage ?? "Unknown Image"),

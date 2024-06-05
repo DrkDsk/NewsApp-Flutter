@@ -4,7 +4,7 @@ import 'package:news_app/ui/screens/search/search.input.dart';
 
 class SearchScreen extends StatelessWidget {
 
-  static const String route = "search";
+  static const String route = "Search";
 
   const SearchScreen({super.key});
 

@@ -18,7 +18,7 @@ class HeaderListNewsTitle extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                value.headerListNewsTitle,
+                value.headerListNewsTitle.toUpperCase(),
                 style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 30,

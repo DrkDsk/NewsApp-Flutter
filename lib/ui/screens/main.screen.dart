@@ -57,15 +57,15 @@ class _MainScreenState extends State<MainScreen> {
             backgroundColor: Colors.white,
             barItems: [
               BarItem(
-                  title: HomeScreen.route,
+                  title: HomeScreen.route.toUpperCase(),
                   icon: Icons.home
               ),
               BarItem(
-                  title: CategoryScreen.route,
+                  title: CategoryScreen.route.toUpperCase(),
                   icon: Icons.category
               ),
               BarItem(
-                  title: SearchScreen.route,
+                  title: SearchScreen.route.toUpperCase(),
                   icon: Icons.search
               ),
             ],

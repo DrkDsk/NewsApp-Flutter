@@ -13,13 +13,8 @@ class ArticleRoundedImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.width * 0.8,
-      width: MediaQuery.of(context).size.width * 0.95,
       decoration: BoxDecoration(
           color: Colors.blue.shade900,
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(35),
-              topRight: Radius.circular(35)
-          ),
           image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(imageUrl),

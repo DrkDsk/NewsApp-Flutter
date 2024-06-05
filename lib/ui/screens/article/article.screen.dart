@@ -9,20 +9,11 @@ class ArticleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Consumer<NewsViewModel>(
       builder: (context, value, child) {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: primaryColor,
-            title: Text(
-              value.selectedArticle.title ?? "Title",
-              style: const TextStyle(
-                  color: darkPrimaryBlueColor,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w700
-              ),
-            ),
           ),
           backgroundColor: primaryColor,
           body: const ArticleItemCard(),

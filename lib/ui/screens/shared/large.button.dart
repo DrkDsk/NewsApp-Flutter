@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class LargeOrangeButton extends StatelessWidget {
+class LargeButton extends StatelessWidget {
 
   final String buttonTitle;
   final VoidCallback onTap;
 
-  const LargeOrangeButton({
+  const LargeButton({
     super.key,
     required this.buttonTitle,
     required this.onTap,
@@ -21,7 +21,7 @@ class LargeOrangeButton extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
               color: Colors.orange,
-              borderRadius: BorderRadius.circular(10)
+              borderRadius: BorderRadius.circular(8)
           ),
           child: Center(
               child: Text(
