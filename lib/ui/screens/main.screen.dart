@@ -6,7 +6,6 @@ import 'package:news_app/ui/screens/categories/category.screen.dart';
 import 'package:news_app/ui/screens/home/home.screen.dart';
 import 'package:news_app/ui/screens/search/search.screen.dart';
 import 'package:provider/provider.dart';
-import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
 
 class MainScreen extends StatefulWidget {
 
@@ -37,6 +36,12 @@ class _MainScreenState extends State<MainScreen> {
       newsViewModel.markAsLoading();
       newsViewModel.fetchTopHeadlines();
     }
+
+    if (index == 2) {
+      newsViewModel.clearArticles();
+      newsViewModel.clearTextSearchController();
+    }
+
     widget.navigationShell.goBranch(
       index,
       initialLocation: index == widget.navigationShell.currentIndex
@@ -53,31 +58,40 @@ class _MainScreenState extends State<MainScreen> {
             height: double.infinity,
             child: widget.navigationShell,
           ),
-          bottomNavigationBar: SlidingClippedNavBar(
-            backgroundColor: Colors.white,
-            barItems: [
-              BarItem(
-                  title: HomeScreen.route.toUpperCase(),
-                  icon: Icons.home
-              ),
-              BarItem(
-                  title: CategoryScreen.route.toUpperCase(),
-                  icon: Icons.category
-              ),
-              BarItem(
-                  title: SearchScreen.route.toUpperCase(),
-                  icon: Icons.search
-              ),
-            ],
-            selectedIndex: value.currentIndexSelectedPage,
-            iconSize: 30,
-            onButtonPressed: (int index) {
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: (int index) {
               setState(() {
                 value.setCurrentIndexPage(index);
               });
               _goToBranch(value.currentIndexSelectedPage);
             },
-            activeColor: Colors.black,
+            selectedLabelStyle: const TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 15
+            ),
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.grey.shade500,
+            currentIndex: value.currentIndexSelectedPage,
+            items: const [
+              BottomNavigationBarItem(
+                label: HomeScreen.route,
+                icon: Icon(
+                    Icons.home
+                )
+              ),
+              BottomNavigationBarItem(
+                  label: CategoryScreen.route,
+                  icon: Icon(
+                      Icons.category
+                  )
+              ),
+              BottomNavigationBarItem(
+                label: SearchScreen.route,
+                icon: Icon(
+                    Icons.search
+                )
+              )
+            ],
           ),
         );
       },

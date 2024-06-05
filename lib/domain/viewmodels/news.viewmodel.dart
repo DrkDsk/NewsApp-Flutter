@@ -4,9 +4,10 @@ import 'package:news_app/domain/models/article.dart';
 
 class NewsViewModel extends ChangeNotifier {
 
+  late TextEditingController textSearchController;
+  late Article selectedArticle;
   final ApiService apiService;
   List<Article> articles = [];
-  late Article selectedArticle;
   String selectedCategory = "";
   String headerListNewsTitle = "Latest news";
   bool isLoading = true;
@@ -25,6 +26,21 @@ class NewsViewModel extends ChangeNotifier {
 
   setHeaderListNewsTitle(String title) {
     headerListNewsTitle = title;
+    notifyListeners();
+  }
+
+  setTextSearchController(TextEditingController textEditingController) {
+    textSearchController = textEditingController;
+    notifyListeners();
+  }
+
+  clearArticles() {
+    articles = [];
+    notifyListeners();
+  }
+
+  clearTextSearchController() {
+    textSearchController.clear();
     notifyListeners();
   }
 
@@ -58,12 +74,12 @@ class NewsViewModel extends ChangeNotifier {
     }
   }
 
-  fetchNewsBySearchField(String search) async {
+  fetchNewsBySearchField() async {
     isLoading = true;
     notifyListeners();
 
     try {
-      articles = await apiService.fetchNewsBySearchField(search: search.toLowerCase());
+      articles = await apiService.fetchNewsBySearchField(search: textSearchController.text.toLowerCase());
     } catch (exception) {
       print(exception.toString());
     } finally {

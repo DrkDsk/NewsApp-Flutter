@@ -39,7 +39,8 @@ class _SearchInputState extends State<SearchInput> {
       if (textController.text.isNotEmpty) {
         String searchText = textController.text;
         newsViewModel.setHeaderListNewsTitle(searchText);
-        newsViewModel.fetchNewsBySearchField(searchText);
+        newsViewModel.setTextSearchController(textController);
+        newsViewModel.fetchNewsBySearchField();
       } else {
         newsViewModel.setHeaderListNewsTitle("Latest news");
         newsViewModel.fetchTopHeadlines();
@@ -50,7 +51,7 @@ class _SearchInputState extends State<SearchInput> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20, bottom: 5),
+      padding: const EdgeInsets.only(top: 20, bottom: 15),
       child: Container(
         height: 80,
         width: MediaQuery.of(context).size.width * 0.8,
