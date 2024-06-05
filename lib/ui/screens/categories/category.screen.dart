@@ -66,7 +66,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
 
     void handleSelectCategory() {
-      newsViewModel.fetchCategoryNews();
+      newsViewModel.fetchCategoryNews(context: context);
       routeProvider.setCurrentIndexPage(0);
       context.goNamed(HomeScreen.route);
     }
