@@ -72,31 +72,29 @@ class _CategoryScreenState extends State<CategoryScreen> {
     }
 
     return Scaffold(
-      body: Expanded(
-        child: Center(
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
-            height: 600,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              controller: _scrollController,
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              itemCount: categoryItems.length,
-              itemBuilder: (BuildContext context, index)  {
-                Category item = categoryItems.elementAt(index);
-                return GestureDetector(
-                  onTap: handleSelectCategory,
-                  child: CategoryCard(
-                    item: item,
-                  )
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(
-                  width: 10,
-                );
-              },
-            ),
+      body: Center(
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+          height: 600,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            controller: _scrollController,
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            itemCount: categoryItems.length,
+            itemBuilder: (BuildContext context, index)  {
+              Category item = categoryItems.elementAt(index);
+              return GestureDetector(
+                onTap: handleSelectCategory,
+                child: CategoryCard(
+                  item: item,
+                )
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(
+                width: 10,
+              );
+            },
           ),
         ),
       ),

@@ -43,7 +43,7 @@ class _SearchInputState extends State<SearchInput> {
         newsViewModel.fetchNewsBySearchField();
       } else {
         newsViewModel.setHeaderListNewsTitle("Latest news");
-        newsViewModel.fetchTopHeadlines();
+        newsViewModel.fetchTopHeadlines(context: context);
       }
     });
   }

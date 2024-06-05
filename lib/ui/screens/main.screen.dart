@@ -34,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
     if (index == 0) {
       newsViewModel.setHeaderListNewsTitle("Latest news");
       newsViewModel.markAsLoading();
-      newsViewModel.fetchTopHeadlines();
+      newsViewModel.fetchTopHeadlines(context: context);
     }
 
     if (index == 2) {

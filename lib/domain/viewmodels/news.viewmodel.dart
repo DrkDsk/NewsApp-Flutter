@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:news_app/data/services/api.service.dart';
 import 'package:news_app/domain/models/article.dart';
 
@@ -11,7 +11,6 @@ class NewsViewModel extends ChangeNotifier {
   String selectedCategory = "";
   String headerListNewsTitle = "Latest news";
   bool isLoading = true;
-  bool errorOnNewsViewModel = false;
 
   NewsViewModel({required this.apiService});
 
@@ -50,16 +49,16 @@ class NewsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  setNoError() {
-    errorOnNewsViewModel = false;
-    notifyListeners();
-  }
+  fetchTopHeadlines({
+    required BuildContext context
+  }) async {
 
-  fetchTopHeadlines() async {
+    if (!context.mounted) return;
+
     try {
       articles = await apiService.fetchTopHeadlines();
     } catch (exception) {
-      errorOnNewsViewModel = true;
+      showErrorDialog(context: context, message: exception.toString());
     } finally {
       isLoading = false;
       notifyListeners();
@@ -74,7 +73,6 @@ class NewsViewModel extends ChangeNotifier {
       articles = await apiService.fetchCategory(category: selectedCategory.toLowerCase());
     } catch (exception) {
       print("exception");
-      errorOnNewsViewModel = true;
     } finally {
       isLoading = false;
       notifyListeners();
@@ -93,5 +91,28 @@ class NewsViewModel extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     }
+  }
+
+  void showErrorDialog({
+    required BuildContext context,
+    required String message
+  }) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("An error occcurred!"),
+            content: Text(message),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("OK")
+              )
+            ],
+          );
+        },
+    );
   }
 }

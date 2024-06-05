@@ -21,7 +21,7 @@ class _ArticlesContainerState extends State<ArticlesContainer> {
   void initState(){
     super.initState();
     newsViewModel = Provider.of<NewsViewModel>(context, listen: false);
-    newsViewModel.fetchTopHeadlines();
+    newsViewModel.fetchTopHeadlines(context: context);
   }
 
   @override
