@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/data/services/api.service.dart';
 import 'package:news_app/domain/models/article.dart';
@@ -55,64 +56,26 @@ class NewsViewModel extends ChangeNotifier {
 
     if (!context.mounted) return;
 
-    try {
-      articles = await apiService.fetchTopHeadlines();
-    } catch (exception) {
-      showErrorDialog(context: context, message: exception.toString());
-    } finally {
-      isLoading = false;
-      notifyListeners();
-    }
+    articles = await apiService.fetchTopHeadlines(context: context);
+    isLoading = false;
+    notifyListeners();
   }
 
-  fetchCategoryNews() async {
+  fetchCategoryNews({required BuildContext context}) async {
     isLoading = true;
     notifyListeners();
 
-    try {
-      articles = await apiService.fetchCategory(category: selectedCategory.toLowerCase());
-    } catch (exception) {
-      print("exception");
-    } finally {
-      isLoading = false;
-      notifyListeners();
-    }
+    articles = await apiService.fetchCategory(category: selectedCategory.toLowerCase(), context: context);
+    isLoading = false;
+    notifyListeners();
   }
 
-  fetchNewsBySearchField() async {
+  fetchNewsBySearchField({required BuildContext context}) async {
     isLoading = true;
     notifyListeners();
 
-    try {
-      articles = await apiService.fetchNewsBySearchField(search: textSearchController.text.toLowerCase());
-    } catch (exception) {
-      print(exception.toString());
-    } finally {
-      isLoading = false;
-      notifyListeners();
-    }
-  }
-
-  void showErrorDialog({
-    required BuildContext context,
-    required String message
-  }) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text("An error occcurred!"),
-            content: Text(message),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text("OK")
-              )
-            ],
-          );
-        },
-    );
+    articles = await apiService.fetchNewsBySearchField(search: textSearchController.text.toLowerCase(), context: context);
+    isLoading = false;
+    notifyListeners();
   }
 }

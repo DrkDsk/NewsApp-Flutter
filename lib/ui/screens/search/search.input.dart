@@ -40,7 +40,7 @@ class _SearchInputState extends State<SearchInput> {
         String searchText = textController.text;
         newsViewModel.setHeaderListNewsTitle(searchText);
         newsViewModel.setTextSearchController(textController);
-        newsViewModel.fetchNewsBySearchField();
+        newsViewModel.fetchNewsBySearchField(context: context);
       } else {
         newsViewModel.setHeaderListNewsTitle("Latest news");
         newsViewModel.fetchTopHeadlines(context: context);
