@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/domain/models/category.dart';
 
 class CategoryCard extends StatelessWidget {
 
-  final String imageAsset;
-  final String title;
+  final Category item;
 
   const CategoryCard({
     super.key,
-    required this.imageAsset,
-    required this.title
+    required this.item
   });
 
   @override
@@ -17,7 +16,7 @@ class CategoryCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.80,
       decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(imageAsset),
+            image: AssetImage(item.imageAsset),
             onError: (error, stackTrace) {},
             fit: BoxFit.cover
           ),
@@ -41,7 +40,7 @@ class CategoryCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              title,
+              item.title,
               style: const TextStyle(
                 fontStyle: FontStyle.normal,
                 fontSize: 35,

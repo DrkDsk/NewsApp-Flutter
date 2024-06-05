@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/domain/models/article.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
+import 'package:news_app/utils/images.dart';
 import 'package:provider/provider.dart';
 
 class ArticleCard extends StatelessWidget {
@@ -51,8 +52,7 @@ class ArticleCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                         image: DecorationImage(
                             fit: BoxFit.fitHeight,
-                            image: NetworkImage(article.urlToImage ?? "Unknown Image"),
-                            onError: (error, stackTrace) {}
+                            image: getDefaultArticleImage(article.urlToImage ?? ""),
                         )
                     ),
                   ),

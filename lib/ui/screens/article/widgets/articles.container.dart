@@ -1,32 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
-import 'package:news_app/ui/screens/article/widgets/article.card.dart';
+import 'package:news_app/ui/screens/article/widgets/articles.listview.dart';
 import 'package:provider/provider.dart';
 
-class ArticlesContainer extends StatelessWidget {
+class ArticlesContainer extends StatefulWidget {
 
   const ArticlesContainer({
-    super.key
+    super.key,
   });
 
   @override
+  State<ArticlesContainer> createState() => _ArticlesContainerState();
+}
+
+class _ArticlesContainerState extends State<ArticlesContainer> {
+
+  late NewsViewModel newsViewModel;
+  late GoRouter router;
+
+  @override
+  void initState(){
+    super.initState();
+    newsViewModel = Provider.of<NewsViewModel>(context, listen: false);
+    newsViewModel.fetchTopHeadlines();
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     return Consumer<NewsViewModel>(
-      builder: (context, value, child) {
-        return  Expanded(
-            child: ListView.builder(
-                itemCount: value.articles.length,
-                itemBuilder: (context, index) {
-                  final article = value.articles.elementAt(index);
-                  return Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ArticleCard(
-                      article: article,
-                    ),
-                  );
-                }
+      builder: (
+          BuildContext context,
+          NewsViewModel newsViewModel,
+          Widget? child
+          ) {
+        return newsViewModel.isLoading ?
+        const Expanded(
+            child: Center(
+              child: CircularProgressIndicator(),
             )
-        );
+        )
+        : const ArticlesListView();
       },
     );
   }

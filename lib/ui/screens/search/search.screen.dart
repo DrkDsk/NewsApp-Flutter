@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/ui/screens/article/widgets/articles.listview.dart';
+import 'package:news_app/ui/screens/article/widgets/articles.container.dart';
 import 'package:news_app/ui/screens/search/search.input.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -15,7 +15,7 @@ class SearchScreen extends StatelessWidget {
         child: Column(
           children: [
             SearchInput(),
-            ArticlesListView()
+            ArticlesContainer()
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/utils/images.dart';
 
 class ArticleRoundedImage extends StatelessWidget {
 
@@ -17,8 +18,7 @@ class ArticleRoundedImage extends StatelessWidget {
           color: Colors.blue.shade900,
           image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage(imageUrl),
-              onError: (error, stackTrace) {}
+              image: getDefaultArticleImage(imageUrl),
           )
       ),
     );

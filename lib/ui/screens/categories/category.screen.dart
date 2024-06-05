@@ -87,8 +87,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 return GestureDetector(
                   onTap: handleSelectCategory,
                   child: CategoryCard(
-                    imageAsset: item.imageAsset,
-                    title: item.title
+                    item: item,
                   )
                 );
               },
