@@ -50,13 +50,13 @@ class _SearchInputState extends State<SearchInput> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      padding: const EdgeInsets.only(top: 20, bottom: 5),
       child: Container(
         height: 80,
         width: MediaQuery.of(context).size.width * 0.8,
         decoration: BoxDecoration(
             color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(8),
             boxShadow: [
               BoxShadow(
                   color: Colors.grey.shade300,
