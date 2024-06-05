@@ -68,7 +68,6 @@ class _MainScreenState extends State<MainScreen> {
                   _goToBranch(value.currentIndexSelectedPage);
                 },
                 selectedLabelStyle: const TextStyle(
-                    fontFamily: 'Poppins',
                     fontSize: 15
                 ),
                 selectedItemColor: Colors.black,

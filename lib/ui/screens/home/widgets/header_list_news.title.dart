@@ -20,7 +20,6 @@ class HeaderListNewsTitle extends StatelessWidget {
               Text(
                 value.headerListNewsTitle.toUpperCase(),
                 style: const TextStyle(
-                    fontFamily: 'Poppins',
                     fontSize: 30,
                     fontWeight: FontWeight.w700
                 ),

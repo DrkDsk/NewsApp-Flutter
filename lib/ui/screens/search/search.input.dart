@@ -78,7 +78,6 @@ class _SearchInputState extends State<SearchInput> {
                 hintText: 'Search',
                 hintStyle: TextStyle(
                     color: Colors.grey[500],
-                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                     fontSize: 24
                 )

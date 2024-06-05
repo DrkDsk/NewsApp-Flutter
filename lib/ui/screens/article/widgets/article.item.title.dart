@@ -18,8 +18,7 @@ class ArticleItemTitle extends StatelessWidget {
         title,
         style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 20,
-            fontFamily: 'Poppins'
+            fontSize: 20
         ),
         maxLines: 2,
       ),

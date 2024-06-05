@@ -70,8 +70,7 @@ class ArticleCard extends StatelessWidget {
                               softWrap: false,
                               style: const TextStyle(
                                   fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  fontFamily: "Poppins"
+                                  fontWeight: FontWeight.w300
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -86,8 +85,7 @@ class ArticleCard extends StatelessWidget {
                               softWrap: false,
                               style: const TextStyle(
                                   fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: "Poppins"
+                                  fontWeight: FontWeight.w700
                               ),
                               textAlign: TextAlign.justify,
                             ),

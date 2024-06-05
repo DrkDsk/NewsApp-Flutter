@@ -32,7 +32,6 @@ class ArticleItemCard extends StatelessWidget {
                           child: Text(
                             "News published at: ${DateFormat("MMM dd, yyyy").format(DateTime.parse(value.selectedArticle.publishedAt ?? ""))}",
                             style: const TextStyle(
-                                fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w700
                             ),
                           ),

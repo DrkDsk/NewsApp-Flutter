@@ -45,7 +45,6 @@ class CategoryCard extends StatelessWidget {
                 fontStyle: FontStyle.normal,
                 fontSize: 35,
                 fontWeight: FontWeight.w600,
-                fontFamily: 'Poppins',
                 color: Colors.white
               ),
             ),

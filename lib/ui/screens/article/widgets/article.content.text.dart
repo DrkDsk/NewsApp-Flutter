@@ -16,7 +16,6 @@ class ArticleContentText extends StatelessWidget {
       child: SingleChildScrollView(
         child: Text(description,
           style: const TextStyle(
-            fontFamily: 'Poppins',
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
