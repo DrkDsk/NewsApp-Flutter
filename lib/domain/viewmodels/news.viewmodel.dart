@@ -4,7 +4,7 @@ import 'package:news_app/domain/models/article.dart';
 
 class NewsViewModel extends ChangeNotifier {
 
-  late TextEditingController textSearchController;
+  TextEditingController textSearchController = TextEditingController();
   late Article selectedArticle;
   final ApiService apiService;
   List<Article> articles = [];
