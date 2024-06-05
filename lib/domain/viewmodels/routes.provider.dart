@@ -8,5 +8,4 @@ class RouteProvider extends ChangeNotifier {
     currentIndexSelectedPage = index;
     notifyListeners();
   }
-
 }
