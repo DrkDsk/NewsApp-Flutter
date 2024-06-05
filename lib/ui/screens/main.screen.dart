@@ -50,7 +50,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<RouteProvider>(
+    return Consumer<NewsViewModel>(
       builder: (context, value, child) {
         return Scaffold(
           body: SizedBox(
@@ -58,40 +58,44 @@ class _MainScreenState extends State<MainScreen> {
             height: double.infinity,
             child: widget.navigationShell,
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            onTap: (int index) {
-              setState(() {
-                value.setCurrentIndexPage(index);
-              });
-              _goToBranch(value.currentIndexSelectedPage);
-            },
-            selectedLabelStyle: const TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 15
-            ),
-            selectedItemColor: Colors.black,
-            unselectedItemColor: Colors.grey.shade500,
-            currentIndex: value.currentIndexSelectedPage,
-            items: const [
-              BottomNavigationBarItem(
-                label: HomeScreen.route,
-                icon: Icon(
-                    Icons.home
-                )
-              ),
-              BottomNavigationBarItem(
-                  label: CategoryScreen.route,
-                  icon: Icon(
-                      Icons.category
+          bottomNavigationBar: Consumer<RouteProvider>(
+            builder: (context, value, child) {
+              return BottomNavigationBar(
+                onTap: (int index) {
+                  setState(() {
+                    value.setCurrentIndexPage(index);
+                  });
+                  _goToBranch(value.currentIndexSelectedPage);
+                },
+                selectedLabelStyle: const TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 15
+                ),
+                selectedItemColor: Colors.black,
+                unselectedItemColor: Colors.grey.shade500,
+                currentIndex: value.currentIndexSelectedPage,
+                items: const [
+                  BottomNavigationBarItem(
+                      label: HomeScreen.route,
+                      icon: Icon(
+                          Icons.home
+                      )
+                  ),
+                  BottomNavigationBarItem(
+                      label: CategoryScreen.route,
+                      icon: Icon(
+                          Icons.category
+                      )
+                  ),
+                  BottomNavigationBarItem(
+                      label: SearchScreen.route,
+                      icon: Icon(
+                          Icons.search
+                      )
                   )
-              ),
-              BottomNavigationBarItem(
-                label: SearchScreen.route,
-                icon: Icon(
-                    Icons.search
-                )
-              )
-            ],
+                ],
+              );
+            },
           ),
         );
       },

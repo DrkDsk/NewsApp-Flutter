@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
 import 'package:news_app/ui/screens/article/widgets/articles.listview.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +16,6 @@ class ArticlesContainer extends StatefulWidget {
 class _ArticlesContainerState extends State<ArticlesContainer> {
 
   late NewsViewModel newsViewModel;
-  late GoRouter router;
 
   @override
   void initState(){
@@ -28,7 +26,6 @@ class _ArticlesContainerState extends State<ArticlesContainer> {
 
   @override
   Widget build(BuildContext context) {
-
     return Consumer<NewsViewModel>(
       builder: (
           BuildContext context,

@@ -51,8 +51,8 @@ class ArticleCard extends StatelessWidget {
                         color: Colors.blue.shade900,
                         borderRadius: BorderRadius.circular(8),
                         image: DecorationImage(
-                            fit: BoxFit.fitHeight,
-                            image: getDefaultArticleImage(article.urlToImage ?? ""),
+                          fit: BoxFit.fitHeight,
+                          image: getDefaultArticleImage(article.urlToImage ?? ""),
                         )
                     ),
                   ),

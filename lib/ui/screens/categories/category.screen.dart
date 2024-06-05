@@ -72,9 +72,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
     }
 
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
+      body: Expanded(
+        child: Center(
+          child: Container(
             margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
             height: 600,
             child: ListView.separated(
@@ -98,7 +98,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               },
             ),
           ),
-        ],
+        ),
       ),
     );
   }
