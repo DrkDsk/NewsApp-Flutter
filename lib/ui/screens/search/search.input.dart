@@ -21,24 +21,20 @@ class _SearchInputState extends State<SearchInput> {
   @override
   void initState() {
     super.initState();
-    textController.addListener(onSearchChanged);
     newsViewModel = Provider.of<NewsViewModel>(context, listen: false);
   }
 
   @override
   void dispose() {
-    textController.removeListener(onSearchChanged);
     textController.dispose();
     _debounce?.cancel();
     super.dispose();
   }
 
-  onSearchChanged() {
+  onSearchChanged(String text) {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds : 500), () {
-      if (textController.text.isNotEmpty) {
-        String searchText = textController.text;
-        newsViewModel.setHeaderListNewsTitle(searchText);
+      if (text.isNotEmpty) {
         newsViewModel.setTextSearchController(textController);
         newsViewModel.fetchNewsBySearchField(context: context);
       } else {
@@ -72,6 +68,7 @@ class _SearchInputState extends State<SearchInput> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           child: TextFormField(
+            onChanged: (value) => onSearchChanged(value),
             controller: textController,
             decoration: InputDecoration(
                 border: InputBorder.none,

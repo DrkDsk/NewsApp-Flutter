@@ -16,15 +16,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: const HeaderListNewsTitle(),
+      ),
       backgroundColor: primaryColor,
       body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            HeaderListNewsTitle(),
-            ArticlesContainer()
-          ],
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 20),
+          child: const ArticlesContainer(),
         ),
       ),
     );

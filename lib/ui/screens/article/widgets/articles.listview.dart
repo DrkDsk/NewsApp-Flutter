@@ -13,7 +13,7 @@ class ArticlesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<NewsViewModel>(
       builder: (context, value, child) {
-        return  Expanded(
+        return Expanded(
             child: ListView.builder(
                 itemCount: value.articles.length,
                 itemBuilder: (context, index) {

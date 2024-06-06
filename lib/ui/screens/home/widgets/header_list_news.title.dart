@@ -12,20 +12,17 @@ class HeaderListNewsTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<NewsViewModel>(
       builder: (context, value, child) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                value.headerListNewsTitle.toUpperCase(),
-                style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700
-                ),
-              )
-            ],
-          ),
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              value.headerListNewsTitle.toUpperCase(),
+              style: const TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w700
+              ),
+            )
+          ],
         );
       },
     );
