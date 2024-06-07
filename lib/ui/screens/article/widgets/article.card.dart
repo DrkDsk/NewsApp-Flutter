@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news_app/core/utils/images.dart';
 import 'package:news_app/domain/models/article.dart';
 import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
-import 'package:news_app/utils/images.dart';
 import 'package:provider/provider.dart';
 
 class ArticleCard extends StatelessWidget {
