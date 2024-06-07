@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/utils/images.dart';
+import 'package:news_app/core/utils/images.dart';
 
 class ArticleRoundedImage extends StatelessWidget {
 
