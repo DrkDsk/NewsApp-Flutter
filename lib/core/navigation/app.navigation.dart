@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:news_app/ui/screens/article/article.screen.dart';
-import 'package:news_app/ui/screens/categories/category.screen.dart';
-import 'package:news_app/ui/screens/home/home.screen.dart';
-import 'package:news_app/ui/screens/main.screen.dart';
-import 'package:news_app/ui/screens/search/search.screen.dart';
+import 'package:news_app/features/article/presentation/screens/article.screen.dart';
+import 'package:news_app/features/category/presentation/screens/category.screen.dart';
+import 'package:news_app/features/home/presentation/screens/home.screen.dart';
+import 'package:news_app/main.screen.dart';
+import 'package:news_app/features/search/presentation/screens/search.screen.dart';
 
 class AppNavigation {
   AppNavigation._();

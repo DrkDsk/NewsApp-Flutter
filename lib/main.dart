@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/navigation/app.navigation.dart';
-import 'package:news_app/data/services/api.service.dart';
-import 'package:news_app/domain/viewmodels/news.viewmodel.dart';
-import 'package:news_app/domain/viewmodels/routes.provider.dart';
+import 'package:news_app/features/article/presentation/providers/news.viewmodel.dart';
+import 'package:news_app/core/shared/presentation/providers/routes.provider.dart';
+import 'package:news_app/features/article/data/services/api.service.dart';
 import 'package:provider/provider.dart';
 
 void main() {
