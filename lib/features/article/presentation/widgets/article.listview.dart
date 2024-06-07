@@ -3,9 +3,9 @@ import 'package:news_app/features/article/presentation/providers/news.viewmodel.
 import 'package:news_app/features/article/presentation/widgets/article.card.dart';
 import 'package:provider/provider.dart';
 
-class ArticlesListView extends StatelessWidget {
+class ArticleListView extends StatelessWidget {
 
-  const ArticlesListView({
+  const ArticleListView({
     super.key
   });
 

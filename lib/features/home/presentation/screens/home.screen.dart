@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/features/article/presentation/widgets/articles.container.dart';
+import 'package:news_app/features/article/presentation/widgets/article.container.dart';
 import 'package:news_app/core/constants/colors.dart';
 import 'package:news_app/core/shared/presentation/widgets/header_list_news.title.dart';
 
@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 20),
-          child: const ArticlesContainer(),
+          child: const ArticleContainer(),
         ),
       ),
     );

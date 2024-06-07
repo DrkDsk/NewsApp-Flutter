@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/features/article/presentation/providers/news.viewmodel.dart';
-import 'package:news_app/features/article/presentation/widgets/articles.listview.dart';
+import 'package:news_app/features/article/presentation/widgets/article.listview.dart';
 import 'package:provider/provider.dart';
 
-class ArticlesContainer extends StatefulWidget {
+class ArticleContainer extends StatefulWidget {
 
-  const ArticlesContainer({
+  const ArticleContainer({
     super.key,
   });
 
   @override
-  State<ArticlesContainer> createState() => _ArticlesContainerState();
+  State<ArticleContainer> createState() => _ArticleContainerState();
 }
 
-class _ArticlesContainerState extends State<ArticlesContainer> {
+class _ArticleContainerState extends State<ArticleContainer> {
 
   late NewsViewModel newsViewModel;
 
@@ -38,7 +38,7 @@ class _ArticlesContainerState extends State<ArticlesContainer> {
               child: CircularProgressIndicator(),
             )
         )
-        : const ArticlesListView();
+        : const ArticleListView();
       },
     );
   }
