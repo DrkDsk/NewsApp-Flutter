@@ -33,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
   void _goToBranch(int index) {
     if (index == 0) {
       newsViewModel.setHeaderListNewsTitle("Latest news");
-      newsViewModel.markAsLoading();
+      newsViewModel.setLoading();
       newsViewModel.fetchTopHeadlines(context: context);
     }
 
