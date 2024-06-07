@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news_app/core/constants/navigation.dart';
 import 'package:news_app/features/article/presentation/providers/news.viewmodel.dart';
 import 'package:news_app/core/shared/presentation/providers/routes.provider.dart';
-import 'package:news_app/features/category/presentation/screens/category.screen.dart';
-import 'package:news_app/features/home/presentation/screens/home.screen.dart';
-import 'package:news_app/features/search/presentation/screens/search.screen.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
@@ -33,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   void _goToBranch(int index) {
     if (index == 0) {
       newsViewModel.setHeaderListNewsTitle("Latest news");
-      newsViewModel.markAsLoading();
+      newsViewModel.setLoading();
       newsViewModel.fetchTopHeadlines(context: context);
     }
 
@@ -62,10 +60,8 @@ class _MainScreenState extends State<MainScreen> {
             builder: (context, value, child) {
               return BottomNavigationBar(
                 onTap: (int index) {
-                  setState(() {
-                    value.setCurrentIndexPage(index);
-                  });
-                  _goToBranch(value.currentIndexSelectedPage);
+                  value.setCurrentIndexPage(index);
+                  _goToBranch(index);
                 },
                 selectedLabelStyle: const TextStyle(
                     fontSize: 15
@@ -73,26 +69,7 @@ class _MainScreenState extends State<MainScreen> {
                 selectedItemColor: Colors.black,
                 unselectedItemColor: Colors.grey.shade500,
                 currentIndex: value.currentIndexSelectedPage,
-                items: const [
-                  BottomNavigationBarItem(
-                      label: HomeScreen.route,
-                      icon: Icon(
-                          Icons.home
-                      )
-                  ),
-                  BottomNavigationBarItem(
-                      label: CategoryScreen.route,
-                      icon: Icon(
-                          Icons.category
-                      )
-                  ),
-                  BottomNavigationBarItem(
-                      label: SearchScreen.route,
-                      icon: Icon(
-                          Icons.search
-                      )
-                  )
-                ],
+                items: bottomNavigationBarItems,
               );
             },
           ),

@@ -45,7 +45,7 @@ class NewsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  markAsLoading() {
+  setLoading() {
     isLoading = true;
     notifyListeners();
   }
