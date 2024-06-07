@@ -82,7 +82,7 @@ class ApiService {
       }
     } on DioException catch (exception) {
       apiException.checkException(exception: exception, context: context);
-    } catch (excetption) {
+    } catch (exception) {
       apiException.defaultErrorMessage(context: context);
     }
 

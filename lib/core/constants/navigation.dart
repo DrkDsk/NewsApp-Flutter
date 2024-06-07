@@ -3,20 +3,20 @@ import 'package:news_app/features/category/presentation/screens/category.screen.
 import 'package:news_app/features/home/presentation/screens/home.screen.dart';
 import 'package:news_app/features/search/presentation/screens/search.screen.dart';
 
-List<BottomNavigationBarItem> bottomNavigationBarItems = [
-  const BottomNavigationBarItem(
+const List<BottomNavigationBarItem> bottomNavigationBarItems = [
+  BottomNavigationBarItem(
       label: HomeScreen.route,
       icon: Icon(
           Icons.home
       )
   ),
-  const BottomNavigationBarItem(
+  BottomNavigationBarItem(
       label: CategoryScreen.route,
       icon: Icon(
           Icons.category
       )
   ),
-  const BottomNavigationBarItem(
+  BottomNavigationBarItem(
       label: SearchScreen.route,
       icon: Icon(
           Icons.search
